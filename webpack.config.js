@@ -1,26 +1,40 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',
-    publicPath: '/public/'
+    publicPath: '/public/',
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'stylesheets/index.css',
+    }),
+    new Dotenv(),
+  ],
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
-      }
-    }]
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react']
+          },
+        },
+      },
+    ],
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
+  watchOptions: {
+    ignored: /node_modules/,
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  }
 };

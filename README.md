@@ -1,3 +1,7 @@
+## Getting started
+```
+$ cp .env.sample .env
+```   
 ## Install project dependencies
 ```
 $ npm install
