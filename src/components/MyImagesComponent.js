@@ -1,12 +1,10 @@
-import React, {useEffect, Fragment} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import * as A from './images.actions';
+import * as A from '../modules/images/images.actions';
 import {ClipLoader} from 'react-spinners';
 import styled from 'styled-components';
-import {Card, Typography} from 'antd';
-import {LazyLoadImage} from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-const { Paragraph } = Typography;
+import {ImagesCardComponent} from './ImagesCardComponent';
 
 export const MyImagesComponent = () => {
   const dispatch = useDispatch();
@@ -19,14 +17,7 @@ export const MyImagesComponent = () => {
   return images.length > 0 ? (
     <ImagesWrapper>
       {images.map(el => {
-        return (
-          <Fragment key={el.id}>
-            <Card title={el.title} style={{width: 300, margin: 'auto'}}>
-              <LazyLoadImage width={250} height={250} effect="blur" src={el.link} />
-              <Paragraph ellipsis>{el.description}</Paragraph>
-            </Card>
-          </Fragment>
-        );
+        return <ImagesCardComponent editable key={el.id} image={el} post={el}/>;
       })}
     </ImagesWrapper>
   ) : (

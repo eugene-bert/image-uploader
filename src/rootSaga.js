@@ -1,5 +1,5 @@
 import {all} from 'redux-saga/effects';
-import {watchLoadData} from './components/images/Images.sagas';
+import {watchLoadData} from './modules/images/Images.sagas';
 
 function* rootSaga() {
   yield all([watchLoadData()]);

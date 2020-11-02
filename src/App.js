@@ -2,23 +2,34 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import 'antd/dist/antd.css';
 import createSagaMiddleware from 'redux-saga';
-import {applyMiddleware, createStore} from 'redux';
-import reducers from './rootReducer';
+import { routerMiddleware } from 'connected-react-router'
+import {applyMiddleware, compose, createStore} from 'redux';
+import { createBrowserHistory } from 'history'
 import logger from 'redux-logger';
 import rootSaga from './rootSaga';
 import {MainDecorator} from './decorators/MainDecorator/MainDecorator';
-import {BrowserRouter as Router} from 'react-router-dom';
+import createRootReducer from './rootReducer';
+
+export const history = createBrowserHistory()
 
 export const App = () => {
   const sagaMiddleware = createSagaMiddleware();
-  const store = createStore(reducers, {}, applyMiddleware(sagaMiddleware, logger));
+
+  const store = createStore(
+    createRootReducer(history),
+    compose(
+      applyMiddleware(
+        routerMiddleware(history),
+        sagaMiddleware,
+        logger
+      ),
+    ),
+  )
   sagaMiddleware.run(rootSaga);
 
   return (
     <Provider store={store}>
-      <Router>
         <MainDecorator />
-      </Router>
     </Provider>
   );
 };

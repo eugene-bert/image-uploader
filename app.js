@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 app.use("/helloWorld", helloWorldRoutes);
 
 app.get("*", (req, res) => {
-  res.redirect("/");
+  res.render("index");
 });
 
 app.listen(process.env.PORT || "3000", process.env.IP, function() {

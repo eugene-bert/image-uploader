@@ -6,6 +6,7 @@ const userName = getUserName()
 const urls = {
   getImages: `/account/${userName}/images/`,
   getViralImages: `/gallery/hot/viral/1`,
+  getFavoriteImages:`/account/${userName}/favorites/`,
   uploadImage: `/image`
 }
 
@@ -45,6 +46,16 @@ class Api {
 
   async getViralImages() {
     const res = await makeGetRequest(urls.getViralImages)
+    return res.data
+  }
+
+  async getFavoriteImages() {
+    const res = await makeGetRequest(urls.getFavoriteImages)
+    return res.data
+  }
+
+  async favoriteImage(image) {
+    const res = await makePostRequest(`/image/${image}/favorite`)
     return res.data
   }
 

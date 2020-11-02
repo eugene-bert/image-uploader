@@ -24,6 +24,29 @@ function* getViralImages() {
   }
 }
 
+function* favoriteImage({payload}) {
+  try {
+    yield call(() => api.favoriteImage(payload))
+    yield put(A.favoriteImage.success())
+    yield put(A.getFavoriteImages.request())
+    yield message.success(`Added to favorites`);
+  } catch (e) {
+    yield put(A.favoriteImage.failure(e))
+    yield message.error(`Adding to favorites failed`);
+    console.log(e);
+  }
+}
+
+function* getFavoriteImages() {
+  try {
+    const imagesData = yield call(() => api.getFavoriteImages())
+    yield put(A.getFavoriteImages.success(imagesData))
+  } catch (e) {
+    yield put(A.getFavoriteImages.failure(e))
+    console.log(e);
+  }
+}
+
 function* uploadImageData({payload}) {
   try {
     yield call(() => api.uploadImage(payload))
@@ -40,5 +63,7 @@ function* uploadImageData({payload}) {
 export function* watchLoadData() {
   yield takeEvery(A.getImagesData.request.toString(), getImagesData)
   yield takeEvery(A.getViralImages.request.toString(), getViralImages)
+  yield takeEvery(A.getFavoriteImages.request.toString(), getFavoriteImages)
+  yield takeEvery(A.favoriteImage.request.toString(), favoriteImage)
   yield takeEvery(A.uploadImage.request.toString(), uploadImageData)
 }

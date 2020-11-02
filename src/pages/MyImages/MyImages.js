@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {MyImagesComponent} from '../../components/images/MyImagesComponent';
+import {MyImagesComponent} from '../../components/MyImagesComponent';
 import {UploadImageModal} from '../../modals/UploadImageModal/UploadImageModal';
 
 export const MyImages = () => {
