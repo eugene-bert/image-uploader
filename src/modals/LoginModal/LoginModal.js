@@ -1,12 +1,9 @@
-import {Modal, Button} from 'antd';
+import {Modal} from 'antd';
 import React, {useEffect} from 'react';
-import { useHistory } from "react-router-dom";
-
-
+import styled from 'styled-components';
 
 export const LoginModal = () => {
   const [isVisible, setIsVisible] = React.useState(true);
-  let history = useHistory();
 
   useEffect(() =>{
     let params = {}, queryString = location.hash.substring(1),
@@ -20,16 +17,22 @@ export const LoginModal = () => {
       localStorage.setItem('token', params.access_token)
       localStorage.setItem('refresh_token', params.refresh_token)
       localStorage.setItem('username', params.account_username)
-      history.push("/");
+      window.location.hash=''
+      window.location.reload()
     }
   }, [])
 
   return (
     <>
-      <Modal closable={false} footer={null} title="Authorization needed to continue" style={{textAlign: "center"}} visible={isVisible}>
+      <ModalWrapper closable={false} footer={null} title="Authorization needed to continue" visible={isVisible}>
         <p>Application is using IMGUR API please login here</p>
         <a href="https://api.imgur.com/oauth2/authorize?client_id=3d138a7adc8c5d8&response_type=token&state=test">Allow access to IMGUR account</a>
-      </Modal>
+      </ModalWrapper>
     </>
   );
 };
+
+//styles
+const ModalWrapper= styled(Modal)`
+   text-align: center;
+`;
