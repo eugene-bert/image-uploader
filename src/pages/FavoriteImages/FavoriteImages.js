@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {FavoriteImagesComponent} from '../../components/FavoriteImagesComponent';
+import {FavoriteImagesComponent} from '../../components/FavoriteImagesComponent/FavoriteImagesComponent';
 
 export const FavoriteImages = () => {
   return (

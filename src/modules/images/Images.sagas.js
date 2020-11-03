@@ -14,12 +14,12 @@ function* getImagesData() {
 }
 
 
-function* getViralImages() {
+function* getViralPosts(payload) {
   try {
-    const imagesData = yield call(() => api.getViralImages())
-    yield put(A.getViralImages.success(imagesData))
+    const imagesData = yield call(() => api.getViralPosts(payload.payload))
+    yield put(A.getViralPosts.success(imagesData))
   } catch (e) {
-    yield put(A.getViralImages.failure(e))
+    yield put(A.getViralPosts.failure(e))
     console.log(e);
   }
 }
@@ -33,6 +33,19 @@ function* favoriteImage({payload}) {
   } catch (e) {
     yield put(A.favoriteImage.failure(e))
     yield message.error(`Adding to favorites failed`);
+    console.log(e);
+  }
+}
+
+function* updateImageInfo({payload}) {
+  try {
+    yield call(() => api.updateImageInfo(payload))
+    yield put(A.updateImageInfo.success())
+    yield put(A.getImagesData.request())
+    yield message.success(`Info updated`);
+  } catch (e) {
+    yield put(A.updateImageInfo.failure(e))
+    yield message.error(`Info update failed`);
     console.log(e);
   }
 }
@@ -62,7 +75,8 @@ function* uploadImageData({payload}) {
 
 export function* watchLoadData() {
   yield takeEvery(A.getImagesData.request.toString(), getImagesData)
-  yield takeEvery(A.getViralImages.request.toString(), getViralImages)
+  yield takeEvery(A.getViralPosts.request.toString(), getViralPosts)
+  yield takeEvery(A.updateImageInfo.request.toString(), updateImageInfo)
   yield takeEvery(A.getFavoriteImages.request.toString(), getFavoriteImages)
   yield takeEvery(A.favoriteImage.request.toString(), favoriteImage)
   yield takeEvery(A.uploadImage.request.toString(), uploadImageData)

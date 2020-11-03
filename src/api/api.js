@@ -5,7 +5,6 @@ import { getUserName } from '../rootSelector';
 const userName = getUserName()
 const urls = {
   getImages: `/account/${userName}/images/`,
-  getViralImages: `/gallery/hot/viral/1`,
   getFavoriteImages:`/account/${userName}/favorites/`,
   uploadImage: `/image`
 }
@@ -44,8 +43,8 @@ class Api {
     return res.data
   }
 
-  async getViralImages() {
-    const res = await makeGetRequest(urls.getViralImages)
+  async getViralPosts(page) {
+    const res = await makeGetRequest(`/gallery/hot/viral/${page}`)
     return res.data
   }
 
@@ -56,6 +55,11 @@ class Api {
 
   async favoriteImage(image) {
     const res = await makePostRequest(`/image/${image}/favorite`)
+    return res.data
+  }
+
+  async updateImageInfo(payload) {
+    const res = await makePostRequest(`/image/${payload.image}`, payload.data)
     return res.data
   }
 

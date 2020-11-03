@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
-import {ViralImagesComponent} from '../../components/ViralImagesComponent';
+import {ViralPostsComponent} from '../../components/ViralImagesComponent/ViralPostsComponent';
 
 export const ViralImages = () => {
   return (
     <Fragment>
-      <ViralImagesComponent/>
+      <ViralPostsComponent/>
     </Fragment>
   );
 };

@@ -1,6 +1,16 @@
 import React, {useState} from 'react';
 import {Layout, Menu} from 'antd';
-import {FolderOutlined, FireOutlined, LogoutOutlined, HeartOutlined} from '@ant-design/icons';
+import {
+  FolderOutlined,
+  ArrowLeftOutlined,
+  FireOutlined,
+  LogoutOutlined,
+  HeartOutlined,
+  ArrowRightOutlined,
+  FireFilled,
+  HeartFilled,
+  FolderFilled
+} from '@ant-design/icons';
 import {Link, Route, Switch, IndexRoute, BrowserRouter as Router, useHistory, useLocation} from 'react-router-dom';
 import {Login} from '../../pages/Login/Login';
 import {getToken} from '../../rootSelector';
@@ -10,7 +20,7 @@ import {ViralImages} from '../../pages/ViralImages/ViralImages';
 import {FavoriteImages} from '../../pages/FavoriteImages/FavoriteImages';
 import {useSelector} from 'react-redux';
 const {Content, Footer, Header, Sider} = Layout;
-import './MainDecorator.css'
+import './MainDecorator.css';
 
 export const MainDecorator = () => {
   const [isCollapsed, setCollapsed] = useState(false);
@@ -22,45 +32,50 @@ export const MainDecorator = () => {
   return (
     <Router history={history}>
       <Layout style={{minHeight: '100vh'}}>
-        <SiderWrapper collapsible collapsed={isCollapsed} onCollapse={() => setCollapsed(!isCollapsed)}>
-            <LogoWrapper className="logo" isCollapsed={isCollapsed}>
-              <img src="/icons/logo.png" alt="" width={200} />
-            </LogoWrapper>
-            <Menu defaultSelectedKeys={[location]} theme="dark" mode="inline">
-              <Menu.Item key="/viral" icon={<FireOutlined />}>
-                <Link to="/viral">Viral</Link>
-              </Menu.Item>
-              <Menu.Item key="/favorites"  icon={<HeartOutlined />}>
-                <Link to="/favorites">Favorites</Link>
-              </Menu.Item>
-              <Menu.Item key="/my-images" icon={<FolderOutlined />}>
-                <Link to="/my-images">My images</Link>
-              </Menu.Item>
-              <Menu.Item
-                icon={<LogoutOutlined />}
-                onClick={() => {
-                  localStorage.clear();
-                  window.location.reload();
-                }}
-              >
-                Sign out
-              </Menu.Item>
-            </Menu>
+        <SiderWrapper
+          trigger={isCollapsed ? <ArrowRightOutlined /> : <ArrowLeftOutlined />}
+          collapsible
+          collapsed={isCollapsed}
+          onCollapse={() => setCollapsed(!isCollapsed)}
+        >
+          <LogoWrapper className="logo" isCollapsed={isCollapsed}>
+            <img src="/icons/logo.png" alt="" width={200} />
+          </LogoWrapper>
+          <Menu defaultSelectedKeys={[location]} theme="dark" mode="inline">
+            <Menu.Item style={{marginTop: 0}} key="/viral" icon={<FireOutlined />}>
+              <Link to="/viral">Viral</Link>
+            </Menu.Item>
+            <Menu.Item key="/favorites" icon={<HeartOutlined />}>
+              <Link to="/favorites">Favorites</Link>
+            </Menu.Item>
+            <Menu.Item key="/my-images" icon={<FolderOutlined />}>
+              <Link to="/my-images">My images</Link>
+            </Menu.Item>
+            <Menu.Item
+              icon={<LogoutOutlined />}
+              onClick={() => {
+                localStorage.clear();
+                window.location.reload();
+              }}
+            >
+              Sign out
+            </Menu.Item>
+          </Menu>
         </SiderWrapper>
         <Layout className="site-layout">
           <MobileMenuWrapper>
-            <Menu theme="dark" mode="horizontal">
-              <Menu.Item icon={<FireOutlined style={{fontSize: "18px"}}/>}>
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[location]}>
+              <Menu.Item key="/viral" icon={<FireFilled style={{fontSize: '18px'}} />}>
                 <Link to="/viral" />
               </Menu.Item>
-              <Menu.Item icon={<HeartOutlined />} style={{fontSize: "18px"}}>
-                <Link to="/favorites"/>
+              <Menu.Item key="/favorites" icon={<HeartFilled  style={{fontSize: '18px'}}/>}>
+                <Link to="/favorites" />
               </Menu.Item>
-              <Menu.Item icon={<FolderOutlined style={{fontSize: "18px"}}/>}>
+              <Menu.Item key="/my-images" icon={<FolderFilled style={{fontSize: '18px'}} />}>
                 <Link to="/my-images" />
               </Menu.Item>
               <Menu.Item
-                icon={<LogoutOutlined style={{fontSize: "18px"}}/>}
+                icon={<LogoutOutlined style={{fontSize: '18px'}} />}
                 onClick={() => {
                   localStorage.clear();
                   window.location.reload();

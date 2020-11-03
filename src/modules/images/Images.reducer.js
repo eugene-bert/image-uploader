@@ -1,8 +1,8 @@
-import {getFavoriteImages, getImagesData, getViralImages} from './images.actions';
+import {getFavoriteImages, getImagesData, getViralPosts} from './images.actions';
 
 const initialState = {
   images: [],
-  viralImages: [],
+  viralPosts: [],
   favoriteImages: []
 };
 
@@ -13,10 +13,10 @@ export const ImagesReducer = (state = initialState, action) => {
         ...state,
         images: action.payload.data,
       };
-    case getViralImages.success.toString():
+    case getViralPosts.success.toString():
       return {
         ...state,
-        viralImages: action.payload.data,
+        viralPosts: action.payload.data,
       };
     case getFavoriteImages.success.toString():
       return {

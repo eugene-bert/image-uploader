@@ -1,6 +1,7 @@
 import {Modal} from 'antd';
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
+import {useSelector} from 'react-redux';
 
 export const LoginModal = () => {
   const [isVisible, setIsVisible] = React.useState(true);
@@ -25,7 +26,7 @@ export const LoginModal = () => {
   return (
     <>
       <ModalWrapper closable={false} footer={null} title="Authorization needed to continue" visible={isVisible}>
-        <p>Application is using IMGUR API please login here</p>
+        <p>Application is using IMGUR API please login here: </p>
         <a href="https://api.imgur.com/oauth2/authorize?client_id=3d138a7adc8c5d8&response_type=token&state=test">Allow access to IMGUR account</a>
       </ModalWrapper>
     </>

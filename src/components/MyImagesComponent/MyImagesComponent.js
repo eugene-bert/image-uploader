@@ -1,23 +1,25 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import * as A from '../modules/images/images.actions';
+import * as A from '../../modules/images/images.actions';
 import {ClipLoader} from 'react-spinners';
 import styled from 'styled-components';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import {ImagesCardComponent} from './ImagesCardComponent';
+import {ImagesCardComponent} from '../ImagesCardComponent/ImagesCardComponent';
 
-export const FavoriteImagesComponent = () => {
+export const MyImagesComponent = () => {
   const dispatch = useDispatch();
-  const images = useSelector(state => state.images).favoriteImages;
+  const images = useSelector(state => state.images).images;
+  const favorite = useSelector(state => state.images).favoriteImages;
 
   useEffect(() => {
-    setTimeout(() => dispatch(A.getFavoriteImages.request()), 0);
+    dispatch(A.getImagesData.request())
+    dispatch(A.getFavoriteImages.request())
   }, [dispatch]);
 
   return images.length > 0 ? (
     <ImagesWrapper>
       {images.map(el => {
-        return <ImagesCardComponent editable key={el.id} image={el} post={el} />;
+        return <ImagesCardComponent favorite={favorite.map(el => el.id)} editable key={el.id} image={el} post={el}/>;
       })}
     </ImagesWrapper>
   ) : (
