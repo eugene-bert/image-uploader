@@ -1,11 +1,13 @@
 import React, {Fragment, useState} from 'react';
-import {Card, Modal, Typography, Image, Button} from 'antd';
+import {Card, Modal, Typography, Image, Button, Collapse, Tooltip} from 'antd';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 import styled from 'styled-components';
-import * as A from '../../modules/images/images.actions';
 import {useDispatch} from 'react-redux';
-import {HeartOutlined} from '@ant-design/icons';
+import {CommentsComponent} from '../CommentsComponent/CommentsComponent';
+import {AddCommentComponent} from '../AddCommentComponent/AddCommentComponent';
+import {BottomButtonsCardComponent} from '../BottomButtonsCardComponent/BottomButtonsCardComponent';
 const {Paragraph, Title, Text} = Typography;
+const { Panel } = Collapse;
 
 export const PostComponent = props => {
   const {post, favorite} = props;
@@ -14,7 +16,7 @@ export const PostComponent = props => {
 
   return (
     <>
-      <Card title={post.title} style={{width: 320, margin: 'auto'}}>
+      <CardWrapper title={post.title} style={{width: 320}}>
         <LazyLoadImage
           width={270}
           height={270}
@@ -23,7 +25,7 @@ export const PostComponent = props => {
           onClick={() => setIsVisible(true)}
         />
         <Paragraph ellipsis>{post.description}</Paragraph>
-      </Card>
+      </CardWrapper>
       <Modal
         title={<TitleWrapper>{post.title}</TitleWrapper>}
         visible={isVisible}
@@ -33,22 +35,34 @@ export const PostComponent = props => {
       >
         {post.images.map(el => {
           return (
-            <Card key={el} title={el.title} style={{background: '#f0f2f5', borderRadius: '10px', margin: '5px'}}>
+            <Card key={el.id} title={el.title} style={{background: '#f0f2f5', borderRadius: '10px', margin: '5px'}}>
               <Image key={el.id} src={el.link} />
-              <Paragraph ellipsis>{el.description}</Paragraph>
-              {!favorite.includes(el.id) ? (
-                <Button type="primary" onClick={() => dispatch(A.favoriteImage.request(el.id))}>
-                  Add to favorite
-                </Button>
-              ) : null}
+              <Paragraph>{el.description}</Paragraph>
+              <BottomButtonsCardComponent id={el.id} favorite={favorite}/>
             </Card>
           );
         })}
         <TextWrapper>{post.description}</TextWrapper>
+        <Collapse ghost>
+          <Panel header="Show comments">
+            <AddCommentComponent id={post.id}/>
+            <CommentsComponent comment={post.id}/>
+          </Panel>
+        </Collapse>
       </Modal>
     </>
   );
 };
+
+const CardWrapper = styled(Card)`
+    margin: auto;
+    transition: background-color .5s;
+    border-radius: 10px;
+    &:hover {
+     background-color:#bae7ff;
+     transition: background-color .5s;
+    }
+`
 
 const TitleWrapper = styled(Title)`
   text-align: center;

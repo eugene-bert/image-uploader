@@ -6,7 +6,8 @@ const userName = getUserName()
 const urls = {
   getImages: `/account/${userName}/images/`,
   getFavoriteImages:`/account/${userName}/favorites/`,
-  uploadImage: `/image`
+  uploadImage: `/image`,
+  addComment: `/comment`
 }
 
 
@@ -53,6 +54,11 @@ class Api {
     return res.data
   }
 
+  async getComments(id) {
+    const res = await makeGetRequest(`/gallery/${id}/comments/new`)
+    return res.data
+  }
+
   async favoriteImage(image) {
     const res = await makePostRequest(`/image/${image}/favorite`)
     return res.data
@@ -67,6 +73,18 @@ class Api {
     const res = await makePostRequest(urls.uploadImage, image)
     return res.data
   }
+
+  async deleteImage(id) {
+    const res = await makeDeleteRequest(`/image/${id}`)
+    return res.data
+  }
+
+
+  async addComment(payload) {
+    const res = await makePostRequest(urls.addComment, payload)
+    return res.data
+  }
+
 }
 
 export default new Api()

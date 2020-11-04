@@ -19,7 +19,7 @@ export const MyImagesComponent = () => {
   return images.length > 0 ? (
     <ImagesWrapper>
       {images.map(el => {
-        return <ImagesCardComponent favorite={favorite.map(el => el.id)} editable key={el.id} image={el} post={el}/>;
+        return <ImagesCardComponent deletable favorite={favorite.map(el => el.id)} editable key={el.id} image={el} post={el}/>;
       })}
     </ImagesWrapper>
   ) : (

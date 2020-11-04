@@ -77,7 +77,7 @@ export const UploadImageModal = () => {
 
 const DraggerWrapper = styled(Dragger)`
   height: auto !important;
-  margin-bottom: 20px;
+  margin: 20px auto;
 `;
 
 const FormWrapper = styled.div`

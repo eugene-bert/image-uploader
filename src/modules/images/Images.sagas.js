@@ -13,7 +13,6 @@ function* getImagesData() {
   }
 }
 
-
 function* getViralPosts(payload) {
   try {
     const imagesData = yield call(() => api.getViralPosts(payload.payload))
@@ -73,11 +72,25 @@ function* uploadImageData({payload}) {
   }
 }
 
-export function* watchLoadData() {
+function* deleteImage({payload}) {
+  try {
+    yield call(() => api.deleteImage(payload))
+    yield put(A.deleteImage.success())
+    yield put(A.getImagesData.request())
+    yield message.success(`Image deleted successfully`);
+  } catch (e) {
+    yield put(A.deleteImage.failure(e))
+    yield message.error(`Image delete failed`);
+    console.log(e);
+  }
+}
+
+export function* watchImagesData() {
   yield takeEvery(A.getImagesData.request.toString(), getImagesData)
   yield takeEvery(A.getViralPosts.request.toString(), getViralPosts)
   yield takeEvery(A.updateImageInfo.request.toString(), updateImageInfo)
   yield takeEvery(A.getFavoriteImages.request.toString(), getFavoriteImages)
   yield takeEvery(A.favoriteImage.request.toString(), favoriteImage)
   yield takeEvery(A.uploadImage.request.toString(), uploadImageData)
+  yield takeEvery(A.deleteImage.request.toString(), deleteImage)
 }

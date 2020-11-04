@@ -11,7 +11,7 @@ import {
   HeartFilled,
   FolderFilled
 } from '@ant-design/icons';
-import {Link, Route, Switch, IndexRoute, BrowserRouter as Router, useHistory, useLocation} from 'react-router-dom';
+import {Link, Route, Switch, BrowserRouter as Router, useHistory} from 'react-router-dom';
 import {Login} from '../../pages/Login/Login';
 import {getToken} from '../../rootSelector';
 import styled from 'styled-components';
@@ -42,14 +42,14 @@ export const MainDecorator = () => {
             <img src="/icons/logo.png" alt="" width={200} />
           </LogoWrapper>
           <Menu defaultSelectedKeys={[location]} theme="dark" mode="inline">
-            <Menu.Item style={{marginTop: 0}} key="/viral" icon={<FireOutlined />}>
-              <Link to="/viral">Viral</Link>
+            <Menu.Item key="/my-images" icon={<FolderOutlined />}>
+              <Link to="/my-images">My images</Link>
             </Menu.Item>
             <Menu.Item key="/favorites" icon={<HeartOutlined />}>
               <Link to="/favorites">Favorites</Link>
             </Menu.Item>
-            <Menu.Item key="/my-images" icon={<FolderOutlined />}>
-              <Link to="/my-images">My images</Link>
+            <Menu.Item key="/viral" icon={<FireOutlined />}>
+              <Link to="/viral">Viral</Link>
             </Menu.Item>
             <Menu.Item
               icon={<LogoutOutlined />}
@@ -65,14 +65,14 @@ export const MainDecorator = () => {
         <Layout className="site-layout">
           <MobileMenuWrapper>
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[location]}>
-              <Menu.Item key="/viral" icon={<FireFilled style={{fontSize: '18px'}} />}>
-                <Link to="/viral" />
+              <Menu.Item key="/my-images" icon={<FolderFilled style={{fontSize: '18px'}} />}>
+                <Link to="/my-images" />
               </Menu.Item>
               <Menu.Item key="/favorites" icon={<HeartFilled  style={{fontSize: '18px'}}/>}>
                 <Link to="/favorites" />
               </Menu.Item>
-              <Menu.Item key="/my-images" icon={<FolderFilled style={{fontSize: '18px'}} />}>
-                <Link to="/my-images" />
+              <Menu.Item key="/viral" icon={<FireFilled style={{fontSize: '18px'}} />}>
+                <Link to="/viral" />
               </Menu.Item>
               <Menu.Item
                 icon={<LogoutOutlined style={{fontSize: '18px'}} />}
@@ -85,11 +85,11 @@ export const MainDecorator = () => {
           </MobileMenuWrapper>
           <ContentWrapper>
             <Switch>
-              <Route path="/" component={token ? ViralImages : Login} exact />
+              <Route path="/" component={token ? MyImages : Login} exact />
               <Route path="/favorites" component={token ? FavoriteImages : Login} exact />
               <Route path="/viral" component={token ? ViralImages : Login} exact />
               <Route path="/my-images" component={token ? MyImages : Login} exact />
-              <Route component={token ? ViralImages : Login} />
+              <Route component={token ? MyImages : Login} />
             </Switch>
           </ContentWrapper>
           <Footer style={{textAlign: 'center'}}>Copyright</Footer>
