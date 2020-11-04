@@ -1,11 +1,9 @@
 import React, {Fragment, useEffect, useState} from 'react'
-import { Comment, Tooltip, Form, Button, Input, List } from 'antd';
+import { Comment, Tooltip, List } from 'antd';
 import {useDispatch, useSelector} from 'react-redux';
-import * as A from '../../modules/comments/comments.actions';
-import {PostSubComment} from '../PostSubComment/PostSubComment';
+import * as A from '@modules/comments/comments.actions';
+import {PostSubComment} from '@components/PostSubComment';
 import moment from 'moment';
-import styled from 'styled-components';
-const { TextArea } = Input;
 
 export const CommentsComponent = (props) => {
   const {comment, post} = props;

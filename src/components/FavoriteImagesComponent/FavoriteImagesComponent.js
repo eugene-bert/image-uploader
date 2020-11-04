@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import * as A from '../../modules/images/images.actions';
+import * as A from '@modules/images/images.actions';
 import {ClipLoader} from 'react-spinners';
 import styled from 'styled-components';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import {ImagesCardComponent} from '../ImagesCardComponent/ImagesCardComponent';
+import {ImagesCardComponent} from '@components/ImagesCardComponent';
 
 export const FavoriteImagesComponent = () => {
   const dispatch = useDispatch();

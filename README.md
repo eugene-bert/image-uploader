@@ -4,11 +4,10 @@ $ cp .env.sample .env
 ```   
 ## Install project dependencies
 ```
-$ npm install
+$ yarn install
 ```
 ## Develop the project
 ```
-$ npm run build
-$ yarn dev
+$ yarn start
 ```
 

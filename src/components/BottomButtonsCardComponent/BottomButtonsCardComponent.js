@@ -1,8 +1,8 @@
 import React from 'react'
-import {Button, Modal, Tooltip} from 'antd';
-import * as A from '../../modules/images/images.actions'
-import {HeartOutlined, HeartFilled} from '@ant-design/icons';
-import {DeleteImageModal} from '../../modals/DeleteImageModal/DeleteImageModal';
+import {Button, Tooltip} from 'antd';
+import * as A from '@modules/images/images.actions'
+import {HeartOutlined} from '@ant-design/icons';
+import {DeleteImageModal} from '@modals/DeleteImageModal/DeleteImageModal';
 import styled from 'styled-components';
 import {useDispatch} from 'react-redux';
 

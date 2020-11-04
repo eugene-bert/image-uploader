@@ -12,14 +12,15 @@ import {
   FolderFilled
 } from '@ant-design/icons';
 import {Link, Route, Switch, BrowserRouter as Router, useHistory} from 'react-router-dom';
-import {Login} from '../../pages/Login/Login';
-import {getToken} from '../../rootSelector';
+import {Login} from '@pages/Login/Login';
+import {getToken} from '@/rootSelector';
 import styled from 'styled-components';
-import {MyImages} from '../../pages/MyImages/MyImages';
-import {ViralImages} from '../../pages/ViralImages/ViralImages';
-import {FavoriteImages} from '../../pages/FavoriteImages/FavoriteImages';
+import {MyImages} from '@pages/MyImages/MyImages';
+import {ViralImages} from '@pages/ViralImages/ViralImages';
+import {FavoriteImages} from '@pages/FavoriteImages/FavoriteImages';
 import {useSelector} from 'react-redux';
 const {Content, Footer, Header, Sider} = Layout;
+import logo from '../../assets/icons/logo'
 import './MainDecorator.css';
 
 export const MainDecorator = () => {
@@ -39,9 +40,9 @@ export const MainDecorator = () => {
           onCollapse={() => setCollapsed(!isCollapsed)}
         >
           <LogoWrapper className="logo" isCollapsed={isCollapsed}>
-            <img src="/icons/logo.png" alt="" width={200} />
+            <img src={logo} alt="" width={200} />
           </LogoWrapper>
-          <Menu defaultSelectedKeys={[location]} theme="dark" mode="inline">
+          <Menu defaultSelectedKeys={[location === '/' ? "/my-images" : location]} theme="dark" mode="inline">
             <Menu.Item key="/my-images" icon={<FolderOutlined />}>
               <Link to="/my-images">My images</Link>
             </Menu.Item>
@@ -64,7 +65,7 @@ export const MainDecorator = () => {
         </SiderWrapper>
         <Layout className="site-layout">
           <MobileMenuWrapper>
-            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[location]}>
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[location === '/' ? "/my-images" : location]}>
               <Menu.Item key="/my-images" icon={<FolderFilled style={{fontSize: '18px'}} />}>
                 <Link to="/my-images" />
               </Menu.Item>

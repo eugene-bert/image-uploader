@@ -1,17 +1,16 @@
-import React, {Fragment, useState} from 'react';
-import {Card, Modal, Typography, Image, Button, Collapse, Tooltip} from 'antd';
+import React, {useState} from 'react';
+import {Card, Modal, Typography, Image, Collapse} from 'antd';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 import styled from 'styled-components';
 import {useDispatch} from 'react-redux';
-import {CommentsComponent} from '../CommentsComponent/CommentsComponent';
-import {AddCommentComponent} from '../AddCommentComponent/AddCommentComponent';
-import {BottomButtonsCardComponent} from '../BottomButtonsCardComponent/BottomButtonsCardComponent';
+import {CommentsComponent} from '@components/CommentsComponent';
+import {AddCommentComponent} from '@components/AddCommentComponent';
+import {BottomButtonsCardComponent} from '@components/BottomButtonsCardComponent';
 const {Paragraph, Title, Text} = Typography;
 const { Panel } = Collapse;
 
 export const PostComponent = props => {
   const {post, favorite} = props;
-  const dispatch = useDispatch();
   const [isVisible, setIsVisible] = useState(false);
 
   return (

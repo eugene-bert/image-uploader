@@ -1,0 +1,1 @@
+export {BottomButtonsCardComponent} from './BottomButtonsCardComponent';

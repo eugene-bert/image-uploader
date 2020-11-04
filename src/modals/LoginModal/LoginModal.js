@@ -1,10 +1,9 @@
 import {Modal} from 'antd';
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
-import {useSelector} from 'react-redux';
 
 export const LoginModal = () => {
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isVisible] = React.useState(true);
 
   useEffect(() =>{
     let params = {}, queryString = location.hash.substring(1),

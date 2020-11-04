@@ -1,0 +1,1 @@
+export {MainDecorator} from './MainDecorator';

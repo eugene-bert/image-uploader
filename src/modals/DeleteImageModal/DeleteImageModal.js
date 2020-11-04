@@ -6,7 +6,7 @@ import {
 import styled from 'styled-components';
 import {DeleteOutlined} from '@ant-design/icons';
 import {useDispatch} from 'react-redux';
-import * as A from '../../modules/images/images.actions';
+import * as A from '@modules/images/images.actions';
 
 export const DeleteImageModal = (props) => {
   const [isVisible, setIsVisible] = useState(false)

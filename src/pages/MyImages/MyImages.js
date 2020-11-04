@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import {MyImagesComponent} from '../../components/MyImagesComponent/MyImagesComponent';
-import {UploadImageModal} from '../../modals/UploadImageModal/UploadImageModal';
+import {MyImagesComponent} from '@components/MyImagesComponent/MyImagesComponent';
+import {UploadImageModal} from '@modals/UploadImageModal/UploadImageModal';
 
 export const MyImages = () => {
   return (

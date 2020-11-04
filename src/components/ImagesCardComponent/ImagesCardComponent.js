@@ -1,13 +1,11 @@
-import React, {Fragment, useState} from 'react';
-import {Card, Modal, Typography, Image, Button, Tooltip} from 'antd';
+import React, { useState} from 'react';
+import {Card, Modal, Typography, Image} from 'antd';
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 import styled from 'styled-components';
-import * as A from '../../modules/images/images.actions';
-import {HeartOutlined, HeartFilled} from '@ant-design/icons';
-import {useDispatch, useSelector} from 'react-redux';
-import {DeleteImageModal} from '../../modals/DeleteImageModal/DeleteImageModal';
-import {BottomButtonsCardComponent} from '../BottomButtonsCardComponent/BottomButtonsCardComponent';
-const {Paragraph, Title, Text, Link} = Typography;
+import * as A from '@modules/images/images.actions';
+import {useDispatch} from 'react-redux';
+import {BottomButtonsCardComponent} from '@components/BottomButtonsCardComponent';
+const {Paragraph, Title, Text} = Typography;
 
 export const ImagesCardComponent = props => {
   const [isVisible, setIsVisible] = useState(false);

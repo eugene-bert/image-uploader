@@ -1,0 +1,1 @@
+export {FavoriteImages} from './FavoriteImages';

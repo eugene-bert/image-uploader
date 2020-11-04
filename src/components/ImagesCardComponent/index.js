@@ -1,0 +1,1 @@
+export {ImagesCardComponent} from './ImagesCardComponent';

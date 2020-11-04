@@ -1,0 +1,1 @@
+export {MyImagesComponent} from './MyImagesComponent';

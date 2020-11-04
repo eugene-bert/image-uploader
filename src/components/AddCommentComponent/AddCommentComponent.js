@@ -1,8 +1,8 @@
-import { Comment, Avatar, Form, Button, List, Input } from 'antd';
+import { Form, Button, Input } from 'antd';
 import React, {useState} from 'react'
 import styled from 'styled-components';
 import {useDispatch} from 'react-redux';
-import * as A from '../../modules/comments/comments.actions';
+import * as A from '@modules/comments/comments.actions';
 const { TextArea } = Input;
 
 export const AddCommentComponent = (props) => {

@@ -1,14 +1,14 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import 'antd/dist/antd.css';
 import createSagaMiddleware from 'redux-saga';
 import { routerMiddleware } from 'connected-react-router'
 import {applyMiddleware, compose, createStore} from 'redux';
 import { createBrowserHistory } from 'history'
 import logger from 'redux-logger';
 import rootSaga from './rootSaga';
-import {MainDecorator} from './decorators/MainDecorator/MainDecorator';
+import {MainDecorator} from '@/decorators/MainDecorator';
 import createRootReducer from './rootReducer';
+import 'antd/dist/antd.css';
 
 export const history = createBrowserHistory()
 

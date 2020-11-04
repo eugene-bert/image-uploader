@@ -1,4 +1,4 @@
-import { createRequest } from '../../sagas/utils'
+import { createRequest } from '@/sagas/utils'
 
 export const getImagesData = createRequest('GET_IMAGES')
 export const getFavoriteImages = createRequest('GET_FAVORITE_IMAGES')

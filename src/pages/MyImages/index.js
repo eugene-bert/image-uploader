@@ -1,0 +1,1 @@
+export {MyImages} from './MyImages';
