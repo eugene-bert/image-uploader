@@ -18,7 +18,7 @@ export const ImagesCardComponent = props => {
     <>
       <CardWrapper title={image.title} style={{width: 320, margin: 'auto'}}>
         <LazyLoadImage width={270} height={270} effect="blur" src={image.link} onClick={() => setIsVisible(true)} />
-        <Paragraph ellipsis>{image.description}</Paragraph>
+        <Paragraph ellipsis style={{padding: "10px 10px 0 10px"}}>{image.description}</Paragraph>
         <BottomButtonsCardComponent deletable={props.deletable} id={image.id} favorite={favorite}/>
       </CardWrapper>
       <Modal
@@ -36,7 +36,9 @@ export const ImagesCardComponent = props => {
         onCancel={() => setIsVisible(false)}
       >
         <Image src={image.link} />
-        <TextWrapper editable={props.editable ? {onChange: e => setDescription(e)} : false}>{description}</TextWrapper>
+        <TextWrapper>
+          <Text editable={props.editable ? {onChange: e => setDescription(e)} : false}>{description}</Text>
+        </TextWrapper>
         <BottomButtonsCardComponent deletable={props.deletable} id={image.id} favorite={favorite}/>
       </Modal>
     </>
@@ -57,7 +59,7 @@ const TitleWrapper = styled(Title)`
   text-align: center;
 `;
 
-const TextWrapper = styled(Text)`
+const TextWrapper = styled.div`
+  margin: 10px;
   font-size: 18px;
-  text-align: center;
 `;

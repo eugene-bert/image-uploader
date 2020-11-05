@@ -12,8 +12,6 @@ export const AddCommentComponent = (props) => {
 
   const addComment = () => {
     const formData = new FormData();
-    {console.log(id)}
-    {console.log(comment)}
     formData.append('image_id', id);
     formData.append('comment', comment);
     dispatch(A.addComment.request({data: formData, id: id}));

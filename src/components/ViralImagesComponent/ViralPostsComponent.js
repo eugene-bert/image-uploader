@@ -9,6 +9,7 @@ import {Button} from 'antd';
 export const ViralPostsComponent = () => {
   const dispatch = useDispatch();
   const posts = useSelector(state => state.images).viralPosts;
+  const isLoading = useSelector(state => state.images).loading;
   const favorite = useSelector(state => state.images).favoriteImages;
   const [page, setPage] = useState(1);
   const filter = posts
@@ -20,10 +21,9 @@ export const ViralPostsComponent = () => {
     dispatch(A.getFavoriteImages.request());
   }, [dispatch, page]);
 
-  return posts.length ? (
+  return !isLoading ? (
     <Fragment>
       <ImagesWrapper>
-        {console.log(posts)}
         {filter.map(el => {
           return <PostComponent favorite={favorite.map(el => el.id)} key={el.id} post={el} />;
         })}
