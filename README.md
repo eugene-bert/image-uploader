@@ -2,7 +2,7 @@
   <img alt="Image Uploader" src="https://image-uploader.bertsovich.com/b85e1de58aac2c746084a8601011202c.png" width="480">
 </p>
 
-##About
+## About
 [Image Uploader](https://image-uploader.bertsovich.com/) - Frontend application connected to [Imgur API](https://apidocs.imgur.com/)
 
 ## What can Image Uploader do?
@@ -10,6 +10,8 @@
 - Favorite an image
 - Viral posts review & commenting
 - List of your images, favorite images, viral posts
+
+##
 
 - ⚛️ [React](https://reactjs.org/)
 - 👾 [Redux](https://redux.js.org/) + [Redux-sage](https://redux-saga.js.org/) 
