@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 export const LoginModal = () => {
   const [isVisible] = React.useState(true);
+  const imgurLink = `https://api.imgur.com/oauth2/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token`;
 
   useEffect(() =>{
     let params = {}, queryString = location.hash.substring(1),
@@ -26,7 +27,7 @@ export const LoginModal = () => {
     <>
       <ModalWrapper closable={false} footer={null} title="Authorization needed to continue" visible={isVisible}>
         <p>Application is using IMGUR API please login here: </p>
-        <a href="https://api.imgur.com/oauth2/authorize?client_id=3d138a7adc8c5d8&response_type=token&state=test">Allow access to IMGUR account</a>
+        <a href={imgurLink}>Allow access to IMGUR account</a>
       </ModalWrapper>
     </>
   );

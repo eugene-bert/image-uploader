@@ -28,7 +28,6 @@ export const MainDecorator = () => {
   const token = getToken();
   const history = useHistory();
   const location = useSelector(state => state.router).location.pathname;
-  const singleMode = process.env.REACT_APP_SINGLE_USER_MODE;
 
   return (
     <Router history={history}>
