@@ -1,1 +1,0 @@
-export {ViralPostsComponent} from './ViralPostsComponent';

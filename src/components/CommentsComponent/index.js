@@ -1,1 +1,0 @@
-export {CommentsComponent} from './CommentsComponent';

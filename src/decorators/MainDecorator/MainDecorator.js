@@ -15,9 +15,9 @@ import {Link, Route, Switch, BrowserRouter as Router, useHistory} from 'react-ro
 import {Login} from '@pages/Login/Login';
 import {getToken} from '@/rootSelector';
 import styled from 'styled-components';
-import {MyImages} from '@pages/MyImages/MyImages';
+import {MyImagesPage} from '@pages/MyImagesPage/MyImagesPage';
 import {ViralImages} from '@pages/ViralImages/ViralImages';
-import {FavoriteImages} from '@pages/FavoriteImages/FavoriteImages';
+import {FavoriteImagesPage} from '@pages/FavoriteImagesPage/FavoriteImagesPage';
 import {useSelector} from 'react-redux';
 const {Content, Footer, Header, Sider} = Layout;
 import logo from '../../assets/icons/logo'
@@ -85,11 +85,11 @@ export const MainDecorator = () => {
           </MobileMenuWrapper>
           <ContentWrapper>
             <Switch>
-              <Route path="/" component={token ? MyImages : Login} exact />
-              <Route path="/favorites" component={token ? FavoriteImages : Login} exact />
+              <Route path="/" component={token ? MyImagesPage : Login} exact />
+              <Route path="/favorites" component={token ? FavoriteImagesPage : Login} exact />
               <Route path="/viral" component={token ? ViralImages : Login} exact />
-              <Route path="/my-images" component={token ? MyImages : Login} exact />
-              <Route component={token ? MyImages : Login} />
+              <Route path="/my-images" component={token ? MyImagesPage : Login} exact />
+              <Route component={token ? MyImagesPage : Login} />
             </Switch>
           </ContentWrapper>
           <Footer style={{textAlign: 'center'}}>Copyright</Footer>

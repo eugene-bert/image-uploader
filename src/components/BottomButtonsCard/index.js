@@ -1,0 +1,1 @@
+export {BottomButtonsCard} from './BottomButtonsCard';

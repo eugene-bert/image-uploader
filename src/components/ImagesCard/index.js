@@ -1,0 +1,1 @@
+export {ImagesCard} from './ImagesCard';

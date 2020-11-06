@@ -1,1 +1,0 @@
-export {MyImagesComponent} from './MyImagesComponent';

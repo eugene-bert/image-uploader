@@ -1,1 +1,0 @@
-export {PostComponent} from './PostComponent';

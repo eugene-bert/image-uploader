@@ -1,1 +1,0 @@
-export {FavoriteImagesComponent} from './FavoriteImagesComponent';

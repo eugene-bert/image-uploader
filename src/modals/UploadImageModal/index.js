@@ -1,1 +1,0 @@
-export {UploadImageModal} from './UploadImageModal';
