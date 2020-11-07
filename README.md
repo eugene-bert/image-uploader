@@ -21,7 +21,7 @@
 [Imgur Api Docs](https://apidocs.imgur.com/)
 
 Copy .env file and fill `REACT_APP_CLIENT_ID` with Imgur Client ID you recieved from registration.
-> Make sure that application redirect configured to your website domain name the or http://localhost:3000/ for development.
+> Make sure that application redirect configured to your website domain name or http://localhost:3000/ for development.
 ```
 $ cp .env.sample .env
 ```   
