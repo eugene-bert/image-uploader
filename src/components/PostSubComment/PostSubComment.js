@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {List} from 'antd';
-import {CommentComponent} from '@components/CommentComponent/CommentComponent';
+import {CommentComponent} from '@components/CommentComponent';
 
 export const PostSubComment = props => {
   const {children, postId} = props;

@@ -8,7 +8,7 @@ import {DeleteOutlined} from '@ant-design/icons';
 import {useDispatch} from 'react-redux';
 import * as A from '@modules/images/images.actions';
 
-export const DeleteImagel = (props) => {
+export const DeleteImage = (props) => {
   const [isVisible, setIsVisible] = useState(false)
   const dispatch = useDispatch()
   const {id} = props

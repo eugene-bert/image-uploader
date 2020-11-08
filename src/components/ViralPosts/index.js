@@ -1,1 +1,1 @@
-export {ViralPost} from './ViralPost';
+export {ViralPosts} from './ViralPosts';

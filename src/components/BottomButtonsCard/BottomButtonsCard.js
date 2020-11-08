@@ -2,7 +2,7 @@ import React from 'react'
 import {Button, Tooltip} from 'antd';
 import * as A from '@modules/images/images.actions'
 import {HeartOutlined} from '@ant-design/icons';
-import {DeleteImagel} from '@modals/DeleteImage/DeleteImagel';
+import {DeleteImage} from '@modals/DeleteImage';
 import styled from 'styled-components';
 import {useDispatch} from 'react-redux';
 
@@ -17,14 +17,9 @@ export const BottomButtonsCard  = (props) => {
           <Button type="primary" onClick={() => dispatch(A.favoriteImage.request(id))}>
             <HeartOutlined />
           </Button>
-        ) : (
-          // <Button type="primary">
-          //   <HeartFilled />
-          // </Button>
-          null
-        )}
+        ) : null}
       </Tooltip>
-      {deletable ? <DeleteImagel id={id} /> : null}
+      {deletable ? <DeleteImage id={id} /> : null}
     </BottomButtonsWrapper>
   )
 }

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import {Post} from '@components/Post';
 import {Button} from 'antd';
 
-export const ViralPost = () => {
+export const ViralPosts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(state => state.images).viralPosts;
   const isLoading = useSelector(state => state.images).loading;

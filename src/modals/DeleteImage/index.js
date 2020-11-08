@@ -1,1 +1,1 @@
-export {DeleteImagel} from './DeleteImagel';
+export {DeleteImage} from './DeleteImage';

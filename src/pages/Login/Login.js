@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import {LoginModal} from '@modals/LoginModal/LoginModal';
+import {LoginModal} from '@modals/LoginModal';
 
 export const Login = () => {
   return (

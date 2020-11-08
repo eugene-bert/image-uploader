@@ -1,8 +1,8 @@
-import React, {Fragment, useEffect, useState} from 'react'
+import React, {Fragment, useEffect} from 'react'
 import { List } from 'antd';
 import {useDispatch, useSelector} from 'react-redux';
 import * as A from '@modules/comments/comments.actions';
-import {CommentComponent} from '@components/CommentComponent/CommentComponent';
+import {CommentComponent} from '@components/CommentComponent';
 
 export const Comments = (props) => {
   const {postId, post} = props;
