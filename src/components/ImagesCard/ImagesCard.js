@@ -33,7 +33,7 @@ export const ImagesCard = props => {
       <Modal
         title={
           <TitleWrapper editable={props.editable ? {onChange: e => setTitle(e)} : false}>
-            {props.editable ? title : null}
+            {props.editable ? title : image.title}
           </TitleWrapper>
         }
         visible={isVisible}
@@ -51,7 +51,7 @@ export const ImagesCard = props => {
         <Image src={image.link} />
         <TextWrapper>
           <Text editable={props.editable ? {onChange: e => setDescription(e)} : false}>
-            {props.editable ? description : null}
+            {props.editable ? description : image.description}
           </Text>
         </TextWrapper>
         <BottomButtonsCard deletable={props.deletable} id={image.id} favorite={favorite} />
