@@ -25,7 +25,7 @@ const optimization = () => {
 module.exports = {
   context: path.join(__dirname, '/src'),
   mode: 'development',
-  entry: './index.js',
+  entry: ['@babel/polyfill', './index.js'],
   output: {
     path: path.join(__dirname, '/dist'),
     filename: filename('js'),
@@ -54,9 +54,7 @@ module.exports = {
       minify: !isDev
     }),
     new MiniCssExtractPlugin({
-      filename: `stylesheets/${filename('css')}`,
-      hmr: isDev,
-      reloadAll: true
+      filename: `stylesheets/${filename('css')}`
     }),
     new Dotenv(),
     new CopyWebpackPlugin({
@@ -75,7 +73,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react'],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: ["babel-plugin-styled-components", "emotion"]
           },
         },

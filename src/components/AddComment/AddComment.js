@@ -17,15 +17,17 @@ export const AddComment = props => {
     if (commentId) {
       formData.append('parent_id', commentId)
       dispatch(A.addComment.request({data: formData, id: postId}));
+      setComment('')
     } else {
       dispatch(A.addComment.request({data: formData, id: postId}));
+      setComment('')
     }
   };
 
   return (
     <AddCommentWrapper>
       <Form.Item>
-        <TextArea rows={4} placeholder="Input comment here" onChange={event => setComment(event.target.value)} />
+        <TextArea rows={4} placeholder="Input comment here" value={comment} onChange={event => setComment(event.target.value)} />
       </Form.Item>
       <Form.Item>
         <Button htmlType="submit" type="primary" onClick={() => addComment()}>
