@@ -21,7 +21,7 @@ export const DeleteImage = (props) => {
           </DeleteButtonWrapper>
           </Tooltip>
           <Modal
-            title="Basic Modal"
+            title="Delete image"
             visible={isVisible}
             onOk={() => {
               dispatch(A.deleteImage.request(id))

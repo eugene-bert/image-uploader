@@ -31,7 +31,11 @@ export const ImagesCard = props => {
         <BottomButtonsCard deletable={props.deletable} id={image.id} favorite={favorite} />
       </CardWrapper>
       <Modal
-        title={<TitleWrapper editable={props.editable ? {onChange: e => setTitle(e)} : false}>{title}</TitleWrapper>}
+        title={
+          <TitleWrapper editable={props.editable ? {onChange: e => setTitle(e)} : false}>
+            {props.editable ? title : null}
+          </TitleWrapper>
+        }
         visible={isVisible}
         okButtonProps={!props.editable ? {style: {display: 'none'}} : null}
         cancelButtonProps={!props.editable ? {style: {display: 'none'}} : null}
@@ -46,7 +50,9 @@ export const ImagesCard = props => {
       >
         <Image src={image.link} />
         <TextWrapper>
-          <Text editable={props.editable ? {onChange: e => setDescription(e)} : false}>{description}</Text>
+          <Text editable={props.editable ? {onChange: e => setDescription(e)} : false}>
+            {props.editable ? description : null}
+          </Text>
         </TextWrapper>
         <BottomButtonsCard deletable={props.deletable} id={image.id} favorite={favorite} />
       </Modal>
