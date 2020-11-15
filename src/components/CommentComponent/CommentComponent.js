@@ -20,9 +20,9 @@ export const CommentComponent = (props) => {
           </Tooltip>
         }
       >
+        {showInput && <AddComment commentId={comment.id} postId={postId} open={showInput}/>}
         {comment.children.length >= 1 ? (<PostSubComment postId={postId} children={comment.children} />) : null}
       </Comment>
-      {showInput ? <AddComment commentId={comment.id} postId={postId} open={showInput}/> : null}
     </li>
   )
 }

@@ -1,6 +1,6 @@
 import axios  from 'axios'
-import { getToken } from '@/rootSelector'
-import { getUserName } from '@/rootSelector';
+import { getToken } from '@/utils'
+import { getUserName } from '@/utils';
 
 const userName = getUserName()
 const urls = {

@@ -4,31 +4,45 @@ const initialState = {
   images: [],
   viralPosts: [],
   favoriteImages: [],
-  loading: false,
+  myImagesLoading: false,
+  viralPostsLoading: false,
+  favoriteImagesLoading: false
 };
 
 export const ImagesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case getImagesData.request.toString():
+      return {
+        ...state,
+        myImagesLoading: true
+      }
     case getImagesData.success.toString():
       return {
         ...state,
         images: action.payload.data,
+        myImagesLoading: false,
       };
     case getViralPosts.request.toString():
       return {
         ...state,
-        loading: true,
+        viralPostsLoading: true
       }
     case getViralPosts.success.toString():
       return {
         ...state,
         viralPosts: action.payload.data,
-        loading: false
+        viralPostsLoading: false,
       };
+    case getFavoriteImages.request.toString():
+      return {
+        ...state,
+        favoriteImagesLoading: true
+      }
     case getFavoriteImages.success.toString():
       return {
         ...state,
         favoriteImages: action.payload.data,
+        favoriteImagesLoading: false,
       };
     default:
       return state;

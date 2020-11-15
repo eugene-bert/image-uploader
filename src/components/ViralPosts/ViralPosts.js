@@ -1,7 +1,6 @@
 import React, {useEffect, Fragment, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as A from '@modules/images/images.actions';
-import {ClipLoader} from 'react-spinners';
 import styled from 'styled-components';
 import {Post} from '@components/Post';
 import {Button} from 'antd';
@@ -9,7 +8,6 @@ import {Button} from 'antd';
 export const ViralPosts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(state => state.images).viralPosts;
-  const isLoading = useSelector(state => state.images).loading;
   const favorite = useSelector(state => state.images).favoriteImages;
   const [page, setPage] = useState(1);
   const filter = posts
@@ -21,7 +19,7 @@ export const ViralPosts = () => {
     dispatch(A.getFavoriteImages.request());
   }, [dispatch, page]);
 
-  return !isLoading ? (
+  return (
     <Fragment>
       <ImagesWrapper>
         {filter.map(el => {
@@ -39,11 +37,7 @@ export const ViralPosts = () => {
         </Button>
       </LoadMoreWrapper>
     </Fragment>
-  ) : (
-    <LoaderWrapper>
-      <ClipLoader size={150} color={'#1890ff'} />
-    </LoaderWrapper>
-  );
+  )
 };
 
 const ImagesWrapper = styled.div`
