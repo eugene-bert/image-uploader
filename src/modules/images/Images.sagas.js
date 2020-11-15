@@ -9,7 +9,7 @@ function* getImagesData() {
     yield put(A.getImagesData.success(imagesData))
   } catch (e) {
     yield put(A.getImagesData.failure(e))
-    yield message.error(`Something went wrong:  ${e.response.data.data.error}`);
+    yield message.error(`Something went wrong`);
     console.log(e);
   }
 }
@@ -20,7 +20,7 @@ function* getViralPosts(payload) {
     yield put(A.getViralPosts.success(imagesData))
   } catch (e) {
     yield put(A.getViralPosts.failure(e))
-    yield message.error(`Something went wrong:  ${e.response.data.data.error}`);
+    yield message.error(`Something went wrong`);
     console.log(e);
   }
 }
@@ -57,7 +57,7 @@ function* getFavoriteImages() {
     yield put(A.getFavoriteImages.success(imagesData))
   } catch (e) {
     yield put(A.getFavoriteImages.failure(e))
-    yield message.error(`Something went wrong:  ${e.message}`);
+    yield message.error(`Something went wrong`);
     console.log(e);
   }
 }

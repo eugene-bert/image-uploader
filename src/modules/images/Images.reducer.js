@@ -6,7 +6,10 @@ const initialState = {
   favoriteImages: [],
   myImagesLoading: false,
   viralPostsLoading: false,
-  favoriteImagesLoading: false
+  favoriteImagesLoading: false,
+  myImagesError: {},
+  viralPostsError: {},
+  favoriteImagesError: {}
 };
 
 export const ImagesReducer = (state = initialState, action) => {
@@ -22,6 +25,11 @@ export const ImagesReducer = (state = initialState, action) => {
         images: action.payload.data,
         myImagesLoading: false,
       };
+    case getImagesData.failure.toString():
+      return {
+        ...state,
+        myImagesError: action.payload.response
+      }
     case getViralPosts.request.toString():
       return {
         ...state,
@@ -33,6 +41,11 @@ export const ImagesReducer = (state = initialState, action) => {
         viralPosts: action.payload.data,
         viralPostsLoading: false,
       };
+    case getViralPosts.failure.toString():
+      return {
+        ...state,
+        viralPostsError: action.payload.response
+      }
     case getFavoriteImages.request.toString():
       return {
         ...state,
@@ -44,6 +57,11 @@ export const ImagesReducer = (state = initialState, action) => {
         favoriteImages: action.payload.data,
         favoriteImagesLoading: false,
       };
+    case getFavoriteImages.failure.toString():
+      return {
+        ...state,
+        favoriteImagesError: action.payload.response
+      } 
     default:
       return state;
   }

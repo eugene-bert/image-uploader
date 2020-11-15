@@ -2,7 +2,7 @@ import React from 'react';
 import {Layout} from 'antd';
 import {Route, Switch, BrowserRouter as Router, useHistory} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {Spin, Alert} from 'antd';
+import {Spin} from 'antd';
 import {ClipLoader} from 'react-spinners';
 import styled from 'styled-components';
 import {MyImagesPage} from '@pages/MyImagesPage';
@@ -18,8 +18,22 @@ const {Content, Footer} = Layout;
 export const MainDecorator = () => {
   const history = useHistory();
   const token = getToken();
-  const {myImagesLoading, viralPostsLoading, favoriteImagesLoading} = useSelector(state => state.images);
-  const isLoading = myImagesLoading || viralPostsLoading || favoriteImagesLoading
+  const {
+    myImagesLoading,
+    viralPostsLoading,
+    favoriteImagesLoading,
+    myImagesError,
+    viralPostsError,
+    favoriteImagesError,
+  } = useSelector(state => state.images);
+  const isLoading = myImagesLoading || viralPostsLoading || favoriteImagesLoading;
+  const fetchErrors = [myImagesError, viralPostsError, favoriteImagesError];
+  
+  // check if not forbidden
+  if ( fetchErrors.filter(el => el.status === 403).length > 0 ) {
+    localStorage.clear();
+    window.location.reload();
+  }
   
   return (
     <Router history={history}>

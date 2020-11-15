@@ -1,9 +1,9 @@
 import React, {Fragment, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {Upload, Modal, Image, Form, Input} from 'antd';
 import {InboxOutlined} from '@ant-design/icons';
 import * as A from '@modules/images/images.actions';
 import styled from 'styled-components';
-import {useDispatch} from 'react-redux';
 const {Dragger} = Upload;
 
 export const UploadImage = () => {

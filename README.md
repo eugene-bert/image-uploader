@@ -14,7 +14,7 @@
 ##
 
 - ⚛️ [React](https://reactjs.org/)
-- 👾 [Redux](https://redux.js.org/) + [Redux-sage](https://redux-saga.js.org/) 
+- 👾 [Redux](https://redux.js.org/) + [Redux-saga](https://redux-saga.js.org/) 
 - 💅 [Ant Design](https://ant.design/) + [Styled-components](https://styled-components.com/)
 
 ## Getting started
