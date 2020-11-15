@@ -13,7 +13,6 @@ export const LoginModal = () => {
     }
 
     if (params.access_token) {
-      console.log(params)
       localStorage.setItem('token', params.access_token)
       localStorage.setItem('refresh_token', params.refresh_token)
       localStorage.setItem('username', params.account_username)
