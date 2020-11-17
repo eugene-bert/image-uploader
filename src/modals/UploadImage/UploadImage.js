@@ -11,7 +11,7 @@ export const UploadImage = () => {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [visible, setIsVisible] = useState(false);
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({title: '', description: ''});
 
   const uploadProps = {
     showUploadList: false,
