@@ -9,6 +9,7 @@ function* getComments({payload}) {
     yield put(A.getComments.success(commentData));
   } catch (e) {
     yield put(A.getComments.failure(e));
+    yield message.error(`Something went wrong`);
     console.log(e);
   }
 }

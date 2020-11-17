@@ -17,6 +17,10 @@ const {Sider} = Layout;
 export const Sidebar = props => {
   const [isCollapsed, setCollapsed] = useState(false);
   const location = useSelector(state => state.router).location.pathname;
+  
+  const moveToTop = () => {
+    window.scrollTo(0, 0);
+  }
 
   return (
     <SiderWrapper
@@ -29,13 +33,13 @@ export const Sidebar = props => {
         <img src={logo} alt="" width={200} />
       </LogoWrapper>
       <Menu defaultSelectedKeys={[location === '/' ? '/my-images' : location]} theme="dark" mode="inline">
-        <Menu.Item key="/my-images" icon={<FolderOutlined />}>
+        <Menu.Item key="/my-images" icon={<FolderOutlined />} onClick={() => moveToTop()}>
           <Link to="/my-images">My images</Link>
         </Menu.Item>
-        <Menu.Item key="/favorites" icon={<HeartOutlined />}>
+        <Menu.Item key="/favorites" icon={<HeartOutlined />} onClick={() => moveToTop()}>
           <Link to="/favorites">Favorites</Link>
         </Menu.Item>
-        <Menu.Item key="/viral" icon={<FireOutlined />}>
+        <Menu.Item key="/viral" icon={<FireOutlined />} onClick={() => moveToTop()}>
           <Link to="/viral">Viral</Link>
         </Menu.Item>
         <Menu.Item

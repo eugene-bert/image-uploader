@@ -15,7 +15,7 @@ export const Post = props => {
   return (
     <>
       <CardWrapper title={post.title} style={{width: 320}}>
-        <LazyLoadImage
+        <ImageWrapper
           width={270}
           height={270}
           effect="blur"
@@ -76,4 +76,8 @@ const TextWrapper = styled(Text)`
 
 const TextContainer = styled.div`
   margin: 15px;
+`;
+
+const ImageWrapper = styled(LazyLoadImage)`
+    object-fit: cover;
 `;

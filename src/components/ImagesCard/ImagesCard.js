@@ -10,14 +10,14 @@ const {Paragraph, Title, Text} = Typography;
 export const ImagesCard = props => {
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
-  const {image, favorite, deletable} = props;
+  const {image, favorite} = props;
   const [title, setTitle] = useState(image.title || 'Input title here');
   const [description, setDescription] = useState(image.description || 'Input description here');
 
   return (
     <>
       <CardWrapper title={image.title} style={{width: 320, margin: 'auto'}}>
-        <LazyLoadImage
+        <ImageWrapper
           width={270}
           height={270}
           effect="blur"
@@ -77,4 +77,8 @@ const TitleWrapper = styled(Title)`
 const TextWrapper = styled.div`
   margin: 10px;
   font-size: 18px;
+`;
+
+const ImageWrapper = styled(LazyLoadImage)`
+    object-fit: cover;
 `;
