@@ -9,6 +9,7 @@ export const ViralPosts = () => {
   const dispatch = useDispatch();
   const posts = useSelector(state => state.images).viralPosts;
   const favorite = useSelector(state => state.images).favoriteImages;
+  const viralPostsLoading = useSelector(state => state.images).viralPostsLoading;
   const [page, setPage] = useState(1);
   const filter = posts
     .filter(el => el.images !== undefined)
@@ -26,16 +27,18 @@ export const ViralPosts = () => {
           return <Post favorite={favorite.map(el => el.id)} key={el.id} post={el} />;
         })}
       </ImagesWrapper>
-      <LoadMoreWrapper>
-        <Button
-          onClick={() => {
-            setPage(page + 1);
-            window.scrollTo(0, 0);
-          }}
-        >
-          Load more
-        </Button>
-      </LoadMoreWrapper>
+      {!viralPostsLoading && (
+        <LoadMoreWrapper>
+          <Button
+            onClick={() => {
+              setPage(page + 1);
+              window.scrollTo(0, 0);
+            }}
+          >
+            Load more
+          </Button>
+        </LoadMoreWrapper>
+      )}
     </Fragment>
   )
 };
@@ -44,13 +47,6 @@ const ImagesWrapper = styled.div`
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-`;
-
-const LoaderWrapper = styled.div`
-  display: grid;
-  place-items: center;
-  height: 100%;
-  width: 100%;
 `;
 
 const LoadMoreWrapper = styled.div`
